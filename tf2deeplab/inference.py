@@ -1,11 +1,12 @@
-from tensorflow.python.keras.preprocessing.image import load_img, img_to_array
-from tf2deeplab.deeplab import DeepLabV3Plus
-from tqdm import tqdm
 import os
-from glob import glob
 import pickle
-from moviepy.editor import ImageSequenceClip
+from glob import glob
 
+from moviepy.editor import ImageSequenceClip
+from tensorflow.python.keras.preprocessing.image import load_img, img_to_array
+from tqdm import tqdm
+
+from tf2deeplab.deeplab import DeepLabV3Plus
 from tf2deeplab.utils import pipeline
 
 h, w = 800, 1600
@@ -19,7 +20,6 @@ image_dir = '/home/mia/backup/research/autonomous_driving/cityscapes/dataset/val
 image_list = os.listdir(image_dir)
 image_list.sort()
 print(f'{len(image_list)} frames found')
-
 
 test = load_img(f'{image_dir}/{image_list[1]}')
 test = img_to_array(test)

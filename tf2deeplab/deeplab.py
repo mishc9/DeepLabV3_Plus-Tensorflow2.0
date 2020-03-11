@@ -1,7 +1,7 @@
 import tensorflow as tf
 from tensorflow.keras import backend as K
-from tensorflow.keras.models import Model
 from tensorflow.keras.layers import AveragePooling2D, Lambda, Conv2D, Activation, concatenate, BatchNormalization
+from tensorflow.keras.models import Model
 from tf2deeplab.resnet50 import ResNet50
 
 
@@ -13,6 +13,7 @@ def Upsample(tensor, size):
         resized = tf.image.resize(
             images=x, size=size)
         return resized
+
     y = Lambda(lambda x: bilinear_upsample(x, size),
                output_shape=size, name=name)(tensor)
     return y
@@ -65,7 +66,7 @@ def DeepLabV3Plus(img_height, img_width, nclasses=66):
 
     base_model = ResNet50(input_shape=(
         img_height, img_width, 3), weights='imagenet', include_top=False)
-    
+
     image_features = base_model.get_layer('activation_39').output
     x_a = ASPP(image_features)
     x_a = Upsample(tensor=x_a, size=[img_height // 4, img_width // 4])
@@ -96,7 +97,7 @@ def DeepLabV3Plus(img_height, img_width, nclasses=66):
     Args:
         from_logits: Whether `y_pred` is expected to be a logits tensor. By default,
         we assume that `y_pred` encodes a probability distribution.
-    '''     
+    '''
     model = Model(inputs=base_model.input, outputs=x, name='DeepLabV3_Plus')
     print(f'*** Output_Shape => {model.output_shape} ***')
     return model

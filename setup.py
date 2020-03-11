@@ -1,4 +1,5 @@
 from distutils.core import setup
+
 import setuptools
 
 try:
@@ -6,7 +7,6 @@ try:
         requirements = f.read().splitlines()
 except FileNotFoundError:
     requirements = None
-
 
 setup(
     name='tf2deeplab',

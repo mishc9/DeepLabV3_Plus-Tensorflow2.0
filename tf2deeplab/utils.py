@@ -23,7 +23,7 @@ def get_image(image_path, img_height=800, img_width=1600, mask=False, flip=0):
     else:
         img = tf.image.decode_png(img, channels=1)
         img = tf.cast(tf.image.resize(images=img, size=[
-                      img_height, img_width]), dtype=tf.uint8)
+            img_height, img_width]), dtype=tf.uint8)
         img = tf.case([
             (tf.greater(flip, 0), lambda: tf.image.flip_left_right(img))
         ], default=lambda: img)
@@ -81,9 +81,9 @@ def pipeline(image, video=True, return_seg=False, fname='', folder=''):
         return img_color / 255.
     else:
         cv2.addWeighted(image, alpha, img_color, 1 - alpha, 0, img_color)
-#         plt.figure(figsize=(20, 10))
-#         out = np.concatenate([image/255, img_color/255, disp/255], axis=1)
+        #         plt.figure(figsize=(20, 10))
+        #         out = np.concatenate([image/255, img_color/255, disp/255], axis=1)
 
-#         plt.imshow(img_color/255.0)
-#         plt.imshow(out)
+        #         plt.imshow(img_color/255.0)
+        #         plt.imshow(out)
         return cv2.imwrite(f'outputs/{folder}/{fname}', cv2.cvtColor(img_color, cv2.COLOR_RGB2BGR))

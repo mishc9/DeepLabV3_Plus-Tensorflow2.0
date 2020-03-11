@@ -6,6 +6,7 @@ from __future__ import print_function
 
 import json
 import warnings
+
 import numpy as np
 
 from . import get_submodules_from_kwargs
@@ -301,7 +302,7 @@ def _obtain_input_shape(input_shape,
                     raise ValueError('The input must have 3 channels; got '
                                      '`input_shape=' + str(input_shape) + '`')
                 if ((input_shape[1] is not None and input_shape[1] < min_size) or
-                   (input_shape[2] is not None and input_shape[2] < min_size)):
+                        (input_shape[2] is not None and input_shape[2] < min_size)):
                     raise ValueError('Input size must be at least ' +
                                      str(min_size) + 'x' + str(min_size) +
                                      '; got `input_shape=' +
@@ -315,7 +316,7 @@ def _obtain_input_shape(input_shape,
                     raise ValueError('The input must have 3 channels; got '
                                      '`input_shape=' + str(input_shape) + '`')
                 if ((input_shape[0] is not None and input_shape[0] < min_size) or
-                   (input_shape[1] is not None and input_shape[1] < min_size)):
+                        (input_shape[1] is not None and input_shape[1] < min_size)):
                     raise ValueError('Input size must be at least ' +
                                      str(min_size) + 'x' + str(min_size) +
                                      '; got `input_shape=' +
