@@ -2,7 +2,7 @@
 
 
 ## Architecture
-![model](deeplabv3plus.png)
+![model](notebooks/deeplabv3plus.png)
 
 <a href="gifs/stuttgart_02.gif " target="_blank"><img 
 src="gifs/stuttgart_02.gif" alt="stuttgart_02" width="430" height="215" 

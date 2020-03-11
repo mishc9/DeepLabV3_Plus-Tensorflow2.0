@@ -1,8 +1,8 @@
 import tensorflow as tf
 from tensorflow.keras import backend as K
 from tensorflow.keras.models import Model
-from tensorflow.keras.layers import AveragePooling2D, Lambda, Conv2D, Conv2DTranspose, Activation, Reshape, concatenate, Concatenate, BatchNormalization, ZeroPadding2D
-from resnet50 import ResNet50
+from tensorflow.keras.layers import AveragePooling2D, Lambda, Conv2D, Activation, concatenate, BatchNormalization
+from tf2deeplab.resnet50 import ResNet50
 
 
 def Upsample(tensor, size):
